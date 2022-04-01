@@ -35,36 +35,3 @@ set_target_properties(loader
 	PROPERTIES
 		OUTPUT_NAME "retdec-loader"
 )
-
-# Install includes.
-install(
-	DIRECTORY ${RETDEC_INCLUDE_DIR}/retdec/loader
-	DESTINATION ${RETDEC_INSTALL_INCLUDE_DIR}/retdec
-)
-
-# Install libs.
-install(TARGETS loader
-	EXPORT loader-targets
-	ARCHIVE DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-	LIBRARY DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-)
-
-# Export targets.
-install(EXPORT loader-targets
-	FILE "retdec-loader-targets.cmake"
-	NAMESPACE retdec::
-	DESTINATION ${RETDEC_INSTALL_CMAKE_DIR}
-)
-
-# Install CMake files.
-configure_file(
-	"retdec-loader-config.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/retdec-loader-config.cmake"
-	@ONLY
-)
-install(
-	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/retdec-loader-config.cmake"
-	DESTINATION
-		"${RETDEC_INSTALL_CMAKE_DIR}"
-)

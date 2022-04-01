@@ -38,36 +38,3 @@ set_target_properties(capstone2llvmir
 	PROPERTIES
 		OUTPUT_NAME "retdec-capstone2llvmir"
 )
-
-# Install includes.
-install(
-	DIRECTORY ${RETDEC_INCLUDE_DIR}/retdec/capstone2llvmir
-	DESTINATION ${RETDEC_INSTALL_INCLUDE_DIR}/retdec
-)
-
-# Install libs.
-install(TARGETS capstone2llvmir
-	EXPORT capstone2llvmir-targets
-	ARCHIVE DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-	LIBRARY DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-)
-
-# Export targets.
-install(EXPORT capstone2llvmir-targets
-	FILE "retdec-capstone2llvmir-targets.cmake"
-	NAMESPACE retdec::
-	DESTINATION ${RETDEC_INSTALL_CMAKE_DIR}
-)
-
-# Install CMake files.
-configure_file(
-	"retdec-capstone2llvmir-config.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/retdec-capstone2llvmir-config.cmake"
-	@ONLY
-)
-install(
-	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/retdec-capstone2llvmir-config.cmake"
-	DESTINATION
-		"${RETDEC_INSTALL_CMAKE_DIR}"
-)

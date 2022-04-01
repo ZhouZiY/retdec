@@ -50,36 +50,3 @@ set_target_properties(demangler
 	PROPERTIES
 		OUTPUT_NAME "retdec-demangler"
 )
-
-# Install includes.
-install(
-	DIRECTORY ${RETDEC_INCLUDE_DIR}/retdec/demangler
-	DESTINATION ${RETDEC_INSTALL_INCLUDE_DIR}/retdec
-)
-
-# Install libs.
-install(TARGETS demangler
-	EXPORT demangler-targets
-	ARCHIVE DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-	LIBRARY DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-)
-
-# Export targets.
-install(EXPORT demangler-targets
-	FILE "retdec-demangler-targets.cmake"
-	NAMESPACE retdec::
-	DESTINATION ${RETDEC_INSTALL_CMAKE_DIR}
-)
-
-# Install CMake files.
-configure_file(
-	"retdec-demangler-config.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/retdec-demangler-config.cmake"
-	@ONLY
-)
-install(
-	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/retdec-demangler-config.cmake"
-	DESTINATION
-		"${RETDEC_INSTALL_CMAKE_DIR}"
-)

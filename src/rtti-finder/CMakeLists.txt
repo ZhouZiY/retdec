@@ -26,36 +26,3 @@ set_target_properties(rtti-finder
 	PROPERTIES
 		OUTPUT_NAME "retdec-rtti-finder"
 )
-
-# Install includes.
-install(
-	DIRECTORY ${RETDEC_INCLUDE_DIR}/retdec/rtti-finder
-	DESTINATION ${RETDEC_INSTALL_INCLUDE_DIR}/retdec
-)
-
-# Install libs.
-install(TARGETS rtti-finder
-	EXPORT rtti-finder-targets
-	ARCHIVE DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-	LIBRARY DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-)
-
-# Export targets.
-install(EXPORT rtti-finder-targets
-	FILE "retdec-rtti-finder-targets.cmake"
-	NAMESPACE retdec::
-	DESTINATION ${RETDEC_INSTALL_CMAKE_DIR}
-)
-
-# Install CMake files.
-configure_file(
-	"retdec-rtti-finder-config.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/retdec-rtti-finder-config.cmake"
-	@ONLY
-)
-install(
-	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/retdec-rtti-finder-config.cmake"
-	DESTINATION
-		"${RETDEC_INSTALL_CMAKE_DIR}"
-)

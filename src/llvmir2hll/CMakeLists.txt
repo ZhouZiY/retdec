@@ -325,36 +325,3 @@ set_target_properties(llvmir2hll
 	PROPERTIES
 		OUTPUT_NAME "retdec-llvmir2hll"
 )
-
-# Install includes.
-install(
-	DIRECTORY ${RETDEC_INCLUDE_DIR}/retdec/llvmir2hll
-	DESTINATION ${RETDEC_INSTALL_INCLUDE_DIR}/retdec
-)
-
-# Install libs.
-install(TARGETS llvmir2hll
-	EXPORT llvmir2hll-targets
-	ARCHIVE DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-	LIBRARY DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-)
-
-# Export targets.
-install(EXPORT llvmir2hll-targets
-	FILE "retdec-llvmir2hll-targets.cmake"
-	NAMESPACE retdec::
-	DESTINATION ${RETDEC_INSTALL_CMAKE_DIR}
-)
-
-# Install CMake files.
-configure_file(
-	"retdec-llvmir2hll-config.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/retdec-llvmir2hll-config.cmake"
-	@ONLY
-)
-install(
-	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/retdec-llvmir2hll-config.cmake"
-	DESTINATION
-		"${RETDEC_INSTALL_CMAKE_DIR}"
-)

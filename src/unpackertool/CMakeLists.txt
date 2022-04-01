@@ -49,33 +49,6 @@ install(
 	DESTINATION ${RETDEC_INSTALL_INCLUDE_DIR}/retdec
 )
 
-# Install libs.
-install(TARGETS unpackertool
-	EXPORT unpackertool-targets
-	ARCHIVE DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-	LIBRARY DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-)
-
-# Export targets.
-install(EXPORT unpackertool-targets
-	FILE "retdec-unpackertool-targets.cmake"
-	NAMESPACE retdec::
-	DESTINATION ${RETDEC_INSTALL_CMAKE_DIR}
-)
-
-# Install CMake files.
-configure_file(
-	"retdec-unpackertool-config.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/retdec-unpackertool-config.cmake"
-	@ONLY
-)
-install(
-	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/retdec-unpackertool-config.cmake"
-	DESTINATION
-		"${RETDEC_INSTALL_CMAKE_DIR}"
-)
-
 ##########################################################################
 
 add_executable(main

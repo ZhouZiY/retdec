@@ -143,36 +143,3 @@ set_target_properties(bin2llvmir
 	PROPERTIES
 		OUTPUT_NAME "retdec-bin2llvmir"
 )
-
-# Install includes.
-install(
-	DIRECTORY ${RETDEC_INCLUDE_DIR}/retdec/bin2llvmir
-	DESTINATION ${RETDEC_INSTALL_INCLUDE_DIR}/retdec
-)
-
-# Install libs.
-install(TARGETS bin2llvmir
-	EXPORT bin2llvmir-targets
-	ARCHIVE DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-	LIBRARY DESTINATION ${RETDEC_INSTALL_LIB_DIR}
-)
-
-# Export targets.
-install(EXPORT bin2llvmir-targets
-	FILE "retdec-bin2llvmir-targets.cmake"
-	NAMESPACE retdec::
-	DESTINATION ${RETDEC_INSTALL_CMAKE_DIR}
-)
-
-# Install CMake files.
-configure_file(
-	"retdec-bin2llvmir-config.cmake"
-	"${CMAKE_CURRENT_BINARY_DIR}/retdec-bin2llvmir-config.cmake"
-	@ONLY
-)
-install(
-	FILES
-		"${CMAKE_CURRENT_BINARY_DIR}/retdec-bin2llvmir-config.cmake"
-	DESTINATION
-		"${RETDEC_INSTALL_CMAKE_DIR}"
-)
